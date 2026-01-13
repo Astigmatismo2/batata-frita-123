@@ -1,0 +1,138 @@
+<html>
+<head>
+</head>
+<body>
+
+<form>
+
+Nome de Guerra: <input type = "text">
+<br>
+Turma: <input type = "text"> <br>
+
+Quero ser: <br>
+<input type = "radio" id = "mentor" name = "tipo"> Mentor <br>
+<input type = "radio" id = "mentorado" name = "tipo"> Mentorado <br>
+
+Na(s) matéria(s): <br>
+<input type = "checkbox" id = 1> Matemática <br>
+<input type = "checkbox" id = 2> Física <br>
+<input type = "checkbox" id = 3> Química <br>
+<input type = "checkbox" id = 4> Biologia <br>
+<input type = "checkbox" id = 5> Ciências Naturais <br>
+<input type = "checkbox" id = 6> Português <br>
+<input type = "checkbox" id = 7> Redação <br>
+<input type = "checkbox" id = 8> Artes <br>
+<input type = "checkbox" id = 9> Inglês <br>
+<input type = "checkbox" id = 10> História <br>
+<input type = "checkbox" id = 11> Geografia <br>
+<input type = "checkbox" id = 12> Sociologia <br>
+<input type = "checkbox" id = 13> Filosofia <br>
+
+<input type = "button" id = "submit" value = "Enviar">
+
+</form>
+
+<br><br>
+<p id = "resultado" > </p>
+
+<script>
+
+var Dias = {
+
+nomGuerra: "Dias",
+turma: 204,
+
+materias: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+//matemática
+
+};
+
+var Laura = {
+
+nomGuerra: "Laura Weber",
+turma: 204,
+
+materias: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+//matemática e artes
+
+};
+
+var Teresa = {
+
+nomGuerra: "Teresa",
+turma: 203,
+
+materias: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+//redação
+
+};
+
+var Brasil = {
+
+nomGuerra: "Brasil",
+turma: 203,
+
+materias: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
+
+};
+
+const monitores = [Dias , Laura , Teresa];
+const monitorados = [Brasil];
+
+materias = [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+
+function parearMentor() {
+
+	for (let j = 0; j < monitores.length; j++){
+	for (let i = 0; i < 13; i++){
+
+		if (monitores[j].materias[i] && materias[i]) {
+		return monitores[j];
+		}
+
+	}
+	}
+
+}
+
+function parearMentorado() {
+	
+	for (var j = 0; j < monitorados.length; j++){
+	for (var i = 0; i < 13; i++){
+
+		if (monitorados[j].materias[i] && materias[i]) {
+		return monitorados[j];
+		}
+
+	}
+	}
+
+}
+
+function parear() {
+
+	par = null;
+	
+	for (let i = 1; i < 14; i++){
+	materias[i - 1] = document.getElementById(i).checked;
+	}
+
+	if(document.getElementById("mentor").checked) {
+	par = parearMentorado();
+	}
+
+	if(document.getElementById("mentorado").checked) {
+	par = parearMentor();
+	}
+
+	if (par != null) 
+	document.getElementById("resultado").innerHTML = par.nomGuerra + " ; " + par.turma;
+
+};
+
+document.getElementById("submit").addEventListener("click", parear);
+
+</script>
+
+</body>
+</html>
