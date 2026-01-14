@@ -1,0 +1,12 @@
+{
+  "name" : "backend",
+  "version" : "1.0.0",
+  "main" : "src/app.js",
+  "dependencies": {
+    "express": "^5.2.1",
+    "joi": "^18.0.2"
+  },
+  "scripts": {
+    "start": "node src/app.js"
+  }
+}
