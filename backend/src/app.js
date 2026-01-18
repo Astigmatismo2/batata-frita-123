@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const Mensagem = require('./Mensagem');
-const { useImperativeHandle } = require('react');
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
@@ -10,7 +9,7 @@ const uri = process.env.MONGODB_URI;
 
 app.use(express.json());
 app.use(((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://astigmatismo2.github.io/batata-frita-123/');
+  res.header('Access-Control-Allow-Origin', '*' /*'https://astigmatismo2.github.io/batata-frita-123/'*/);
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 }
