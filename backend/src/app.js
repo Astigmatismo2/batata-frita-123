@@ -15,12 +15,6 @@ app.use(((req, res, next) => {
 }
 ));
 
-let mensagens = Mensagem.find({mensagem: {$exists: true}}).then(docs => {
-  mensagens = docs;
-}).catch(err => {
-  console.error(err);
-});
-
 mongoose.connect(uri)
   .then(() => {
     console.log('MongoDB connected');
@@ -47,14 +41,14 @@ app.post('/mensagens', (req, res) => {
 });
 
 app.get('/mensagens', (req, res) => {
-
-  let mensagens = Mensagem.find({mensagem: {$exists: true}}).then(docs => {
-    mensagens = docs;
-  }).catch(err => {
-    console.error(err);
-  });
-
-  res.send(mensagens);
+  Mensagem.find({mensagem: {$exists: true}})
+    .then(mensagens => {
+      res.send(mensagens);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send({error: 'Failed to fetch messages'});
+    });
 });
 
 app.listen(port, () => {
