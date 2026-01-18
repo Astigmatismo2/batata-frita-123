@@ -1,4 +1,6 @@
 let caixaTexto = document.getElementById("Intestino Delgado");
+const backendURL = 'http://localhost:3000/mensagens';
+//'https://batata-frita-123-backend.onrender.com/mensagens'
 
 caixaTexto.addEventListener('keypress', (evento) => {
     if (evento.key === 'Enter') {
@@ -9,17 +11,19 @@ caixaTexto.addEventListener('keypress', (evento) => {
 });
 
 function enviarMensagem(mensagem) {
-    fetch('https://batata-frita-123.onrender.com/alunos', {
+    fetch(backendURL, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
         body: JSON.stringify({ mensagem: mensagem })
+    }).catch(error => {
+        console.error('Erro ao enviar mensagem:', error);
     });
 }
 
 function receberMensagens() {
-    fetch('https://batata-frita-123.onrender.com/alunos')
+    fetch(backendURL)
     .then(response => response.json())
     .then(mensagens => {
         
@@ -38,6 +42,8 @@ function receberMensagens() {
             chatDiv.appendChild(p);
         }
 
+    }).catch(error => {
+        console.error('Erro ao receber mensagens:', error);
     });
 }
 
