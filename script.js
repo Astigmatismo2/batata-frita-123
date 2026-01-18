@@ -1,5 +1,5 @@
 let caixaTexto = document.getElementById("Intestino Delgado");
-const backendURL = 'http://localhost:3000/mensagens';
+const backendURL = 'https://batata-frita-123-backend.onrender.com/mensagens';
 //'https://batata-frita-123-backend.onrender.com/mensagens'
 
 caixaTexto.addEventListener('keypress', (evento) => {
