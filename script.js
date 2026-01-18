@@ -26,11 +26,17 @@ function receberMensagens() {
         const chatDiv = document.getElementById("chat");
         chatDiv.innerHTML = "";
 
-        mensagens.forEach(msg => {
+        /*mensagens.forEach(msg => {
             const p = document.createElement("p");
             p.textContent = msg.mensagem;
             chatDiv.appendChild(p);
-        });
+        });*/
+
+        for (let i = mensagens.length - 1; i >= 0; i--) {
+            const p = document.createElement("p");
+            p.textContent = mensagens[i].mensagem;
+            chatDiv.appendChild(p);
+        }
 
     });
 }
