@@ -9,7 +9,7 @@ const uri = process.env.MONGODB_URI;
 
 app.use(express.json());
 app.use(((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*' /*'https://astigmatismo2.github.io/batata-frita-123/'*/);
+  res.header('Access-Control-Allow-Origin', 'https://astigmatismo2.github.io/batata-frita-123/');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 }
