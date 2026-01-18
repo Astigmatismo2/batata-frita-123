@@ -9,7 +9,7 @@ const uri = process.env.MONGODB_URI;
 
 app.use(express.json());
 app.use(((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://astigmatismo2.github.io');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 }
@@ -42,7 +42,7 @@ app.post('/mensagens', (req, res) => {
   }).catch(err => {
     console.error('Erro ao salvar mensagem:', err);
   });
-  
+
   res.status(201).send(mensagem);
 });
 
